@@ -41,7 +41,8 @@ public class RobotContainer {
                 s_Swerve, 
                 () -> -driver.getRawAxis(translationAxis), 
                 () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
+                () -> -driver.getRawAxis(rotationAxis),
+                // on/off gyro while driving: 
                 () -> robotCentric.getAsBoolean()
             )
         );
