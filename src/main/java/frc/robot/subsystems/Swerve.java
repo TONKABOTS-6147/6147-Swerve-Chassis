@@ -57,7 +57,7 @@ public class Swerve extends SubsystemBase {
                                     rotation, 
                                     Rotation2d.fromDegrees(getYaw())
                                 )
-                                : new ChassisSpeeds(
+                                : new ChassisSpeeds( // not field relative (boolean)
                                     translation.getX(), 
                                     translation.getY(), 
                                     rotation)
