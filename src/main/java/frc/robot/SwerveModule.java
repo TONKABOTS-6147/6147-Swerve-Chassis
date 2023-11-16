@@ -16,6 +16,7 @@ import com.ctre.phoenix.sensors.CANCoder;
 
 public class SwerveModule {
     public int moduleNumber;
+    public char moduleID;
     private Rotation2d angleOffset;
     private Rotation2d lastAngle;
 
@@ -25,9 +26,10 @@ public class SwerveModule {
 
     SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.Swerve.driveKS, Constants.Swerve.driveKV, Constants.Swerve.driveKA);
 
-    public SwerveModule(int moduleNumber, SwerveModuleConstants moduleConstants){
+    public SwerveModule(int moduleNumber, SwerveModuleConstants moduleConstants, char moduleID){
         this.moduleNumber = moduleNumber;
         this.angleOffset = moduleConstants.angleOffset;
+        this.moduleID = moduleID;
         
         /* Angle Encoder Config */
         angleEncoder = new CANCoder(moduleConstants.cancoderID);
