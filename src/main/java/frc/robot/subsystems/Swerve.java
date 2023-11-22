@@ -120,12 +120,14 @@ public class Swerve extends SubsystemBase {
 
     @Override
     public void periodic(){
-        swerveOdometry.update(Rotation2d.fromDegrees(getYaw()), getModulePositions());  
+        swerveOdometry.update(Rotation2d.fromDegrees(getYaw()), getModulePositions()); 
+        
 
         for(SwerveModule mod : mSwerveMods){
             SmartDashboard.putNumber("Mod " + mod.moduleID + " Cancoder", mod.getCanCoder().getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleID + " Integrated", mod.getPosition().angle.getDegrees());
-            SmartDashboard.putNumber("Mod " + mod.moduleID + " Velocity", mod.getState().speedMetersPerSecond);    
+            SmartDashboard.putNumber("Mod " + mod.moduleID + " Velocity", mod.getState().speedMetersPerSecond);   
+            SmartDashboard.putNumber("Gyro ", getYaw());
         }
     }
 }

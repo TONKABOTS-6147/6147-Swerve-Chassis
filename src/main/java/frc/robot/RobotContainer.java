@@ -22,13 +22,18 @@ public class RobotContainer {
     private final Joystick driver = new Joystick(0);
 
     /* Drive Controls */
-    private final int translationAxis = XboxController.Axis.kLeftY.value;
-    private final int strafeAxis = XboxController.Axis.kLeftX.value;
-    private final int rotationAxis = XboxController.Axis.kRightX.value;
+    // private final int translationAxis = XboxController.Axis.kLeftY.value;
+    private final int translationAxis = 1;
+
+    // private final int strafeAxis = XboxController.Axis.kLeftX.value;
+    private final int strafeAxis = 0;
+
+    // private final int rotationAxis = XboxController.Axis.kRightX.value;
+    private final int rotationAxis = 2;
 
     /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton zeroGyro = new JoystickButton(driver, 1); // black button on stick 
+    private final JoystickButton robotCentric = new JoystickButton(driver, 2); // gray button on side
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -39,9 +44,9 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis), 
-                () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis),
+                () -> driver.getRawAxis(translationAxis), //
+                () -> driver.getRawAxis(strafeAxis), 
+                () -> driver.getRawAxis(rotationAxis),
                 // on/off gyro while driving: 
                 () -> robotCentric.getAsBoolean()
             )
